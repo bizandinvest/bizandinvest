@@ -180,6 +180,35 @@ https://templatemo.com/tm-545-finance-business
       <p class="faq-answer">Absolutely! Bizandinvest regularly organizes exclusive networking events where businesses, investors, and financiers can connect, share ideas, and explore opportunities for collaboration. These events are designed to foster meaningful relationships and partnerships that can lead to mutual growth. Whether you’re seeking investors or looking for strategic alliances, our events provide the perfect platform to engage with like-minded professionals and expand your network.</p>
     </div>
 
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Select all FAQ question elements
+        const faqQuestions = document.querySelectorAll(".faq-question");
+    
+        faqQuestions.forEach((question) => {
+          question.addEventListener("click", function () {
+            // Toggle active state for the clicked question
+            const answer = this.nextElementSibling;
+    
+            if (answer.classList.contains("active")) {
+              answer.classList.remove("active");
+              answer.style.maxHeight = null;
+            } else {
+              // Collapse all other answers
+              document.querySelectorAll(".faq-answer.active").forEach((activeAnswer) => {
+                activeAnswer.classList.remove("active");
+                activeAnswer.style.maxHeight = null;
+              });
+    
+              // Expand the selected answer
+              answer.classList.add("active");
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+          });
+        });
+      });
+    </script>
+    
     <form id="faq-form">
       <label for="faq-user-question">Your Question:</label>
       <textarea id="faq-user-question" name="message" rows="4" required></textarea>
