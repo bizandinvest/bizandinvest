@@ -1543,103 +1543,95 @@ footer .contact-form button.filled-button:hover {
     color: #007bff; /* Blue color for the heading */
     margin-bottom: 20px;
   }
+.get-started-section input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  margin-right: 10px; /* Spacing between radio buttons and labels */
+}
 
-  .get-started-section input[type=radio] {
-    box-sizing: border-box;
-    padding: 0;
-    position: relative;
-    top: 40px;
-    left: -261px;
+.get-started-section label {
+  font-size: 16px;
+  color: #333;
+  display: inline-block; /* Aligns with radio buttons */
+  margin-right: 15px; /* Adjust spacing for layout */
+  font-weight: bold;
+}
+
+.get-started-section input,
+.get-started-section select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.get-started-section input:focus,
+.get-started-section select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.get-started-section button {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.get-started-section button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .get-started-section {
+    padding: 20px;
+    margin: 10px;
   }
 
-  /* Label styling */
-  .get-started-section label {
-    font-size: 16px;
-    color: #333; /* Black text for labels */
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+  .get-started-section h2 {
+    font-size: 20px;
   }
 
-  /* Input and select field styling */
   .get-started-section input,
   .get-started-section select {
-    width: 100%;
-    padding: 12px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-  }
-
-  /* Focus effect on input/select fields */
-  .get-started-section input:focus,
-  .get-started-section select:focus {
-    border-color: #007bff; /* Blue border on focus */
-    outline: none;
-  }
-
-  /* Button styling */
-  .get-started-section button {
-    background-color: #007bff; /* Blue background */
-    color: white;
-    padding: 15px 25px;
     font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
+    padding: 10px;
   }
 
-  /* Button hover effect */
-  .get-started-section button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-
-  /* Make the form responsive for smaller screens */
-  @media (max-width: 768px) {
-    .get-started-section {
-      padding: 20px; /* Less padding on smaller screens */
-      margin: 10px;
-    }
-
-    .get-started-section h2 {
-      font-size: 20px; /* Slightly smaller heading for mobile */
-    }
-
-    .get-started-section input,
-    .get-started-section select {
-      font-size: 16px; /* Adjust font size for mobile inputs */
-      padding: 10px;
-    }
-
-    .get-started-section button {
-      padding: 12px 20px; /* Slightly smaller button padding on mobile */
-    }
+  .get-started-section button {
+    padding: 12px 20px;
   }
 
   .get-started-section input[type=radio] {
-    box-sizing: border-box;
-    padding: 0;
-    position: relative;
-    top: 38px;
-    left: -258px;
+    margin-right: 8px;
+  }
 
-  /* For extra small devices like phones in portrait mode */
-  @media (max-width: 480px) {
-    .get-started-section {
-      max-width: 100%;
-      padding: 15px;
-    }
+  .get-started-section label {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .get-started-section {
+    max-width: 100%;
+    padding: 15px;
   }
 
   .get-started-section input[type=radio] {
-    box-sizing: border-box;
-    padding: 0;
-    position: relative;
-  top: 38px;
-  left: -115px;
+    margin-right: 5px;
+  }
+
+  .get-started-section label {
+    font-size: 12px;
   }
 }
