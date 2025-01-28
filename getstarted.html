@@ -69,10 +69,11 @@
   </div>
 </div>
    
-  
-<section class="registration-form">
+  <section class="registration-form">
   <h1>Welcome to BizandInvest Registration Form</h1>
   
+  <form id="registrationForm" action="https://script.google.com/macros/s/XYZ123/exec" method="POST">
+
   <!-- Initial Role Selection -->
   <div id="get-started" class="section visible">
     <h2>Get Started</h2>
@@ -102,7 +103,7 @@
     <div id="basic-info-investor" class="form-section">
       <h3>Basic Information</h3>
       <label for="full-name">Full Name:</label>
-      <input type="text" id="full-name" name="full-name" required><br>
+      <input type="text" id="fullName" name="full-name" required><br>
       <label for="email">Email Address:</label>
       <input type="email" id="email" name="email" required><br>
       <label for="phone">Phone Number (optional):</label>
@@ -319,21 +320,60 @@
     <div id="professional-background" class="form-section" style="display:none;">
       <h3>Professional Background</h3>
       <label for="investor-type">Investor Type:</label>
-<select name="investor-type" id="investor-type" required>
-  <option value="it">Angel Investor</option>
-  <option value="it">Venture capitalist</option>
-  <option value="it">Personal Investor</option>
-  <option value="it">Other</option>
-</select><br>
+      <select name="investor-type" id="investorType" required onchange="showOtherInput(this)">
+        <option value="Angel Investor">Angel Investor</option>
+        <option value="Venture capitalist">Venture capitalist</option>
+        <option value="Personal Investor">Personal Investor</option>
+        <option value="Other">Other</option>
+      </select>
+      
+      <div class="otherInput" id="investorTypeOther" style="display: none;">
+        <label for="investorTypeOtherInput">Please specify:</label>
+        <input type="text" id="investorTypeOtherInput" name="investorTypeOther" placeholder="Enter your custom investor type">
+      </div>
+      
+      <script>
+        function showOtherInput(selectElement) {
+          var selectedValue = selectElement.value;
+          var otherDiv = document.getElementById("investorTypeOther");
+      
+          if (selectedValue === "Other") {
+            otherDiv.style.display = "block";
+          } else {
+            otherDiv.style.display = "none";
+          }
+        }
+      </script>
+      
+<br>
       <label for="industry-interest">Industry Interest:</label>
-      <input type="text" id="industry-interest" name="industry-interest" required><br>
+      <input type="text" id="industryInterest" name="industry-interest" required><br>
       <label for="interest-in">Interested In:</label>
-<select name="interest-in" id="interest-in" required>
-  <option value="ii">Acquiring a business</option>
-  <option value="ii">investing in a business </option>
-  <option value="ii">lending to a business</option>
-  <option value="ii">Other</option>
-</select><br>
+      <select name="interest-in" id="investmentInterest" required onchange="showIndustryInterestInput(this)">
+        <option value="Acquiring a business">Acquiring a business</option>
+        <option value="Investing in a business">Investing in a business</option>
+        <option value="Lending to a business">Lending to a business</option>
+        <option value="Other">Other</option>
+      </select>
+      
+      <div class="otherInput" id="industryInterestOther" style="display: none;">
+        <label for="industryInterestOtherInput">Please specify:</label>
+        <input type="text" id="industryInterestOtherInput" name="industryInterestOther" placeholder="Enter your custom industry">
+      </div>
+      
+      <script>
+        function showIndustryInterestInput(selectElement) {
+          var selectedValue = selectElement.value;
+          var otherDiv = document.getElementById("industryInterestOther");
+      
+          if (selectedValue === "Other") {
+            otherDiv.style.display = "block";
+          } else {
+            otherDiv.style.display = "none";
+          }
+        }
+      </script>
+      <br>
       <button onclick="showPrevious('professional-background', 'basic-info-investor')">Previous</button>
       <button onclick="showNext('professional-background', 'investment-preferences')">Next</button>
     </div>
@@ -341,20 +381,39 @@
     <div id="investment-preferences" class="form-section" style="display:none;">
       <h3>Investment Preferences</h3>
       <label for="investment-budget">Investment Budget / Range:</label>
-      <input type="text" id="investment-budget" name="investment-budget" required><br>
+      <input type="text" id="investmentBudget" name="investment-budget" required><br>
       <label for="investment-stages">Preferred Investment Stages:</label>
-<select name="investment-stages" id="investment-stages" required>
-  <option value="is">Seed </option>
-  <option value="is">Series A</option>
-  <option value="is">Series B</option>
-  <option value="is">Series C</option>
-  <option value="is">Series D</option>
-  <option value="is">Other</option>
-</select><br>
+      <select name="investment-stages" id="investmentStages" required onchange="showInvestmentStagesInput(this)">
+        <option value="Seed">Seed</option>
+        <option value="Series A">Series A</option>
+        <option value="Series B">Series B</option>
+        <option value="Series C">Series C</option>
+        <option value="Series D">Series D</option>
+        <option value="Other">Other</option>
+      </select>
+      
+      <div class="otherInput" id="investmentStagesOther" style="display: none;">
+        <label for="investmentStagesOtherInput">Please specify:</label>
+        <input type="text" id="investmentStagesOtherInput" name="fundingNeededOther" placeholder="Enter your custom funding stage">
+      </div>
+      
+      <script>
+        function showInvestmentStagesInput(selectElement) {
+          var selectedValue = selectElement.value;
+          var otherDiv = document.getElementById("investmentStagesOther");
+      
+          if (selectedValue === "Other") {
+            otherDiv.style.display = "block";
+          } else {
+            otherDiv.style.display = "none";
+          }
+        }
+      </script>
+<br>      
       <label for="return-expectation">Return Expectation (Optional):</label>
-      <input type="text" id="return-expectation" name="return-expectation"><br>
+      <input type="text" id="returnExpectation" name="return-expectation"><br>
       <button onclick="showPrevious('investment-preferences', 'professional-background')">Previous</button>
-      <button onclick="submitForm()">Submit</button>
+      <button type="submit" onclick="submitForm()">Submit</button>
     </div>
     
     <button onclick="goBack()">Back to Role Selection</button>
@@ -368,13 +427,13 @@
     <!-- Business Forms -->
     <div id="basic-info-business" class="form-section">
       <h3>Basic Information</h3>
-      <label for="business-name">Business Name:</label>
+      <label for="businessName">Business Name:</label>
       <input type="text" id="business-name" name="business-name" required><br>
       <label for="business-email">Email Address:</label>
-      <input type="email" id="business-email" name="business-email" readonly><br>
+      <input type="email" id="email" name="business-email" readonly><br>
       <label for="contact-person">Contact Person Name:</label>
-      <input type="text" id="contact-person" name="contact-person" required><br>
-      <label for="country">Country</label>
+      <input type="text" id="contactPerson" name="contact-person" required><br>
+      <label for="country">Country:</label>
       <select name="country" id="country" required>
         <option value="" disabled selected>Select your country</option>
         <option value="AF">Afghanistan</option>
@@ -586,30 +645,69 @@
     <div id="business-details" class="form-section" style="display:none;">
       <h3>Business Details</h3>
       <label for="industry">Industry:</label>
-      <select name="industry" id="industry" required>
-        <option value="in">Agriculture</option>
-        <option value="in">Technology</option>
-        <option value="in">Fashion</option>
-        <option value="in">Music</option>
-        <option value="in">Health</option>
-        <option value="in">Entertainment</option>
-        <option value="in">Trader</option>
-        <option value="in">Other</option>
-
-      </select><br>
+      <select name="industry" id="industry" required onchange="showIndustryInput(this)">
+        <option value="Agriculture">Agriculture</option>
+        <option value="Technology">Technology</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Music">Music</option>
+        <option value="Health">Health</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Trader">Trader</option>
+        <option value="Other">Other</option>
+      </select>
+      
+      <div class="otherInput" id="industryOther" style="display: none;">
+        <label for="industryInput">Please specify:</label>
+        <input type="text" id="industryInput" name="industryInput" placeholder="Enter custom option">
+      </div>
+      
+      <script>
+        function showIndustryInput(selectElement) {
+          var selectedValue = selectElement.value;
+          var otherDiv = document.getElementById("industryOther");
+      
+          if (selectedValue === "Other") {
+            otherDiv.style.display = "block";
+          } else {
+            otherDiv.style.display = "none";
+          }
+        }
+      </script>
+      
+      <br>
       <label for="business-type">Business Type:</label>
-      <select name="business-type" id="business-type" required>
-        <option value="bt">Sole proprietorship</option>
-        <option value="bt">Partnership</option>
-        <option value="bt">Limited company</option>
-        <option value="bt">Other</option>
-      </select><br>
+      <select name="business-type" id="businessType" required onchange="showBusinessTypeInput(this)">
+        <option value="Sole proprietorship">Sole proprietorship</option>
+        <option value="Partnership">Partnership</option>
+        <option value="Limited company">Limited company</option>
+        <option value="Other">Other</option>
+      </select>
+      
+      <div class="otherInput" id="businessTypeOther" style="display: none;">
+        <label for="businessTypeOtherInput">Please specify:</label>
+        <input type="text" id="businessTypeOtherInput" name="businessTypeOther" placeholder="Enter custom option">
+      </div>
+      
+      <script>
+        function showBusinessTypeInput(selectElement) {
+          var selectedValue = selectElement.value;
+          var otherDiv = document.getElementById("businessTypeOther");
+      
+          if (selectedValue === "Other") {
+            otherDiv.style.display = "block";
+          } else {
+            otherDiv.style.display = "none";
+          }
+        }
+      </script>
+      
+      <br>
       <label for="registration-number">Company Registration Number:</label>
-      <input type="text" id="registration-number" name="registration-number" required><br>
+      <input type="text" id="registrationNumber" name="registration-number" required><br>
       <label for="business-description">Business Description:</label>
-      <input type="text" id="business-description" name="business-description" required><br>
+      <input type="text" id="businessDescription" name="business-description" required><br>
       <label for="annual-sales">Annual Sales and Margin on Sales:</label>
-      <input type="text" id="annual-sales" name="annual-sales" required><br>
+      <input type="text" id="annualSales" name="annual-sales" required><br>
       <button onclick="showPrevious('business-details', 'basic-info-business')">Previous</button>
       <button onclick="showNext('business-details', 'funding-information')">Next</button>
     </div>
@@ -617,63 +715,100 @@
     <div id="funding-information" class="form-section" style="display:none;">
       <h3>Funding Information</h3>
       <label for="investment-amount">Amount of Investment Needed:</label>
-      <input type="text" id="investment-amount" name="investment-amount" required><br>
+      <input type="text" id="investmentAmount" name="investment-amount" required><br>
       <label for="investment-purpose">Purpose of Investment:</label>
-      <input type="text" id="investment-purpose" name="investment-purpose" required><br>
+      <input type="text" id="investmentPurpose" name="investment-purpose" required><br>
       <label for="preferred-investor">Preferred Investor Type:</label>
-      <select name="preferred-investor" id="preferred-investor" required>
-        <option value="pi">Angel Investor</option>
-        <option value="pi">Venture capitalist</option>
-        <option value="pi">Other</option>
-      </select> <br>
+<select name="preferred-investor" id="preferredInvestorType" required onchange="showPreferredInvestorInput(this)">
+  <option value="Angel Investor">Angel Investor</option>
+  <option value="Venture capitalist">Venture capitalist</option>
+  <option value="Other">Other</option>
+</select>
+
+<div class="otherInput" id="preferredInvestorTypeOther" style="display: none;">
+  <label for="preferredInvestorTypeOtherInput">Please specify:</label>
+  <input type="text" id="preferredInvestorTypeOtherInput" name="preferredInvestorTypeOther" placeholder="Enter custom option">
+</div>
+
+<script>
+  function showPreferredInvestorInput(selectElement) {
+    var selectedValue = selectElement.value;
+    var otherDiv = document.getElementById("preferredInvestorTypeOther");
+
+    if (selectedValue === "Other") {
+      otherDiv.style.display = "block";
+    } else {
+      otherDiv.style.display = "none";
+    }
+  }
+</script>
+
+      <br>
       <label for="equity-offered">Equity Offered:</label>
-      <input type="text" id="equity-offered" name="equity-offered"><br>
+      <input type="text" id="equityOffered" name="equity-offered"><br>
       <button onclick="showPrevious('funding-information', 'business-details')">Previous</button>
-      <button onclick="submitForm()">Submit</button>
+      <button type="submit" onclick="submitForm()">Submit</button>
     </div>
 
     <button onclick="goBack()">Back to Role Selection</button>
   </div>
 
-  <!-- JavaScript -->
-  <script>
-    function showSection() {
-      const userType = document.querySelector('input[name="user-type"]:checked');
-      if (!userType) {
-        alert("Please select a role (Investor or Business) before proceeding.");
-        return;
-      }
-      const selectedValue = userType.value;
-      document.getElementById("get-started").style.display = "none";
 
-      if (selectedValue === "investor") {
-        document.getElementById("investor-section").style.display = "block";
-      } else if (selectedValue === "business") {
-        document.getElementById("business-section").style.display = "block";
-      }
+</form>
+
+
+<script>
+  function showSection() {
+    const userType = document.querySelector('input[name="user-type"]:checked');
+    if (!userType) {
+      alert("Please select a role (Investor or Business) before proceeding.");
+      return;
     }
+    const selectedValue = userType.value;
+    document.getElementById("get-started").style.display = "none";
 
-    function goBack() {
-      document.getElementById("investor-section").style.display = "none";
-      document.getElementById("business-section").style.display = "none";
-      document.getElementById("get-started").style.display = "block";
+    if (selectedValue === "investor") {
+      document.getElementById("investor-section").style.display = "block";
+    } else if (selectedValue === "business") {
+      document.getElementById("business-section").style.display = "block";
     }
+  }
 
-    function showNext(current, next) {
-      document.getElementById(current).style.display = "none";
-      document.getElementById(next).style.display = "block";
-    }
+  function goBack() {
+    document.getElementById("investor-section").style.display = "none";
+    document.getElementById("business-section").style.display = "none";
+    document.getElementById("get-started").style.display = "block";
+  }
 
-    function showPrevious(current, previous) {
-      document.getElementById(current).style.display = "none";
-      document.getElementById(previous).style.display = "block";
-    }
+  function showNext(current, next) {
+    document.getElementById(current).style.display = "none";
+    document.getElementById(next).style.display = "block";
+  }
 
-    function submitForm() {
+  function showPrevious(current, previous) {
+    document.getElementById(current).style.display = "none";
+    document.getElementById(previous).style.display = "block";
+  }
+
+  function submitForm() {
+    const form = document.getElementById('registrationForm');
+    const formData = new FormData(form);
+
+    fetch('https://script.google.com/macros/s/XYZ123/exec', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
       alert("Form submitted successfully!");
-      goBack(); // Redirect back to the role selection after submission
-    }
-  </script>
+      goBack();
+    })
+    .catch(error => {
+      alert("Error submitting form. Please try again.");
+    });
+  }
+</script>
+
 
   <!-- CSS -->
   <style>
@@ -791,8 +926,8 @@
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
   
-    input:focus,
-    select:focus {
+    input:focus-within,
+    select:focus-within {
       transform: scale(1.05); /* Increase size slightly when focused */
       border-color: #1DA1F3; /* Keep border color blue */
     }
@@ -829,31 +964,6 @@
   
   
 </section>
-
-
-
-<script>
-function adjustIframeHeight() {
-  var iframe = document.getElementById('form-frame');
-  
-  // Adjust height to ensure no scrollbars, with an additional height for the form content
-  iframe.style.height = window.innerHeight + 'px'; 
-  
-  // Use an appropriate minimum height to avoid content getting cut off if the content is short
-  if (iframe.contentWindow.document.body.scrollHeight > window.innerHeight) {
-      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-  }
-}
-
-// Adjust iframe height when the page loads
-window.onload = adjustIframeHeight;
-
-// Adjust iframe height whenever the window is resized
-window.onresize = adjustIframeHeight;
-</script>
-
-
-
     <!-- Footer -->
     <footer>
       <div class="container">
