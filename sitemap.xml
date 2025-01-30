@@ -43,5 +43,24 @@
   <priority>0.80</priority>
 </url>
 
+      <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Bizandinvest",
+    "url": "https://bizandinvest.com",
+    "logo": "https://bizandinvest.com/01.png",
+    "sameAs": [
+      "https://www.facebook.com/bizandinvest",
+      "https://twitter.com/bizandinvest"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+233302941556",
+      "contactType": "customer service"
+    }
+  }
+</script>
+
 
 </urlset>
