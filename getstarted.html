@@ -758,7 +758,6 @@
 
 </form>
 
-
 <script>
   function showSection() {
     const userType = document.querySelector('input[name="user-type"]:checked');
@@ -811,14 +810,20 @@
 
     // Only submit the form if all fields are filled
     if (allFieldsFilled) {
+      // Show a loading alert to notify user
+      alert("Submitting your form, please wait...");
+
       fetch(form.action, {  // Using the action URL from your form
         method: 'POST',
         body: formData
       })
-      .then(response => response.json())
-      .then(data => {
-        alert("Form submitted successfully!");
-        goBack();
+      .then(response => {
+        if (response.ok) {
+          alert("Form submitted successfully!");
+          goBack();
+        } else {
+          alert("There was an error submitting the form. Please try again.");
+        }
       })
       .catch(error => {
         alert("Error submitting form. Please try again.");
@@ -826,6 +831,7 @@
     }
   }
 </script>
+
 
   <!-- CSS -->
   <style>
