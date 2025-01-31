@@ -69,920 +69,352 @@
   </div>
 </div>
    
-  <section class="registration-form">
-  <h1>Welcome to BizandInvest Registration Form</h1>
+  <section class="registration-form">  
   
-<form
-  action="https://formspree.io/f/mvgzraqj"
-  method="POST"
->
-  <!-- Initial Role Selection -->
-  <div id="get-started" class="section visible">
-    <h2>Get Started</h2>
-    <p>Please choose your role:</p> <br>
-    <div class="radio-group">
-      <label class="radio-wrapper">
-        <input type="radio" name="user-type" value="investor" class="radio-input">
-        <span class="radio-custom"></span>
-        <span class="radio-label">Investor</span>
-      </label>
-      <label class="radio-wrapper">
-        <input type="radio" name="user-type" value="business" class="radio-input">
-        <span class="radio-custom"></span>
-        <span class="radio-label">Business</span>
-      </label>
-    </div>
+<style>
+
+/* General Section Styling */
+section {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #00C6FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the section takes full viewport height but doesn't push the footer */
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box; /* Prevents padding from increasing the section's height */
+  flex-direction: column;
+}
+
+/* Styling for the Intro Section */
+.intro-container {
+  text-align: center;
+  margin-bottom: 20px; /* Space between the heading and the role buttons */
+}
+
+h1 {
+  background: linear-gradient(90deg, #1DA1F3, #00C6FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.role-buttons button {
+  padding: 12px 25px;
+  background-color: #1DA1F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.role-buttons button:hover {
+  background-color: #ffffff;
+  color: #1DA1F3;
+  border: 2px solid #1DA1F3;
+}
+
+/* Form Container Styling */
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: none; /* Hide both forms by default */
+}
+
+/* Show form when active */
+.form-container.active {
+  display: block;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #000;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="email"], input[type="text"], input[type="tel"] {
+  font-size: 16px;
+}
+
+/* General Button Styling */
+.button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+}
+
+button[type="submit"] {
+  background-color: #00C6FF;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Styling */
+button[type="submit"]:hover {
+  background-color: #0072ff;
+}
+
+/* Styling for Previous Button */
+button[type="button"] {
+  background-color: #f4f4f4;
+  color: #00C6FF;
+  border: 2px solid #00C6FF;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for Previous Button */
+button[type="button"]:hover {
+  background-color: #00C6FF;
+  color: white;
+}
+
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  section {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .role-buttons button {
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .role-buttons button {
+    font-size: 14px;
+  }
+}
+
+
+</style>
     
-    <button onclick="showSection()">Next</button>
+  <div class="intro-container">
+    <h1>Welcome! Please Select Your Role</h1>
+    <div class="role-buttons">
+      <button onclick="showForm('investor')">Register as Investor</button>
+      <button onclick="showForm('business')">Register as Business</button>
+    </div>
   </div>
 
-  <!-- Investor Section -->
-  <div id="investor-section" class="section">
-    <h2>Investor Section</h2>
-    <p>Welcome, Investor! Please complete the following forms:</p>
-    
-    <!-- Investor Forms -->
-    <div id="basic-info-investor" class="form-section">
-      <h3>Basic Information</h3>
-      <label for="full-name">Full Name:</label>
-      <input type="text" id="fullName" name="full-name" required><br>
-      <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" required><br>
-      <label for="phone">Phone Number (optional):</label>
-      <input type="tel" id="phone" name="phone"><br>
-      <label for="country">Country</label>
-      <select name="country" id="country" required>
-        <option value="" disabled selected>Select your country</option>
-        <option value="AF">Afghanistan</option>
-        <option value="AL">Albania</option>
-        <option value="DZ">Algeria</option>
-        <option value="AS">American Samoa</option>
-        <option value="AD">Andorra</option>
-        <option value="AO">Angola</option>
-        <option value="AI">Anguilla</option>
-        <option value="AG">Antigua and Barbuda</option>
-        <option value="AR">Argentina</option>
-        <option value="AM">Armenia</option>
-        <option value="AW">Aruba</option>
-        <option value="AU">Australia</option>
-        <option value="AT">Austria</option>
-        <option value="AZ">Azerbaijan</option>
-        <option value="BS">Bahamas</option>
-        <option value="BH">Bahrain</option>
-        <option value="BD">Bangladesh</option>
-        <option value="BB">Barbados</option>
-        <option value="BY">Belarus</option>
-        <option value="BE">Belgium</option>
-        <option value="BZ">Belize</option>
-        <option value="BJ">Benin</option>
-        <option value="BM">Bermuda</option>
-        <option value="BT">Bhutan</option>
-        <option value="BO">Bolivia</option>
-        <option value="BA">Bosnia and Herzegovina</option>
-        <option value="BW">Botswana</option>
-        <option value="BR">Brazil</option>
-        <option value="BN">Brunei</option>
-        <option value="BG">Bulgaria</option>
-        <option value="BF">Burkina Faso</option>
-        <option value="BI">Burundi</option>
-        <option value="CV">Cabo Verde</option>
-        <option value="KH">Cambodia</option>
-        <option value="CM">Cameroon</option>
-        <option value="CA">Canada</option>
-        <option value="KY">Cayman Islands</option>
-        <option value="CF">Central African Republic</option>
-        <option value="TD">Chad</option>
-        <option value="CL">Chile</option>
-        <option value="CN">China</option>
-        <option value="CO">Colombia</option>
-        <option value="KM">Comoros</option>
-        <option value="CG">Congo (Congo-Brazzaville)</option>
-        <option value="CD">Congo (Congo-Kinshasa)</option>
-        <option value="CR">Costa Rica</option>
-        <option value="CI">Côte d’Ivoire</option>
-        <option value="HR">Croatia</option>
-        <option value="CU">Cuba</option>
-        <option value="CY">Cyprus</option>
-        <option value="CZ">Czechia</option>
-        <option value="DK">Denmark</option>
-        <option value="DJ">Djibouti</option>
-        <option value="DM">Dominica</option>
-        <option value="DO">Dominican Republic</option>
-        <option value="EC">Ecuador</option>
-        <option value="EG">Egypt</option>
-        <option value="SV">El Salvador</option>
-        <option value="GQ">Equatorial Guinea</option>
-        <option value="ER">Eritrea</option>
-        <option value="EE">Estonia</option>
-        <option value="SZ">Eswatini</option>
-        <option value="ET">Ethiopia</option>
-        <option value="FJ">Fiji</option>
-        <option value="FI">Finland</option>
-        <option value="FR">France</option>
-        <option value="GA">Gabon</option>
-        <option value="GM">Gambia</option>
-        <option value="GE">Georgia</option>
-        <option value="DE">Germany</option>
-        <option value="GH">Ghana</option>
-        <option value="GR">Greece</option>
-        <option value="GD">Grenada</option>
-        <option value="GU">Guam</option>
-        <option value="GT">Guatemala</option>
-        <option value="GN">Guinea</option>
-        <option value="GW">Guinea-Bissau</option>
-        <option value="GY">Guyana</option>
-        <option value="HT">Haiti</option>
-        <option value="HN">Honduras</option>
-        <option value="HU">Hungary</option>
-        <option value="IS">Iceland</option>
-        <option value="IN">India</option>
-        <option value="ID">Indonesia</option>
-        <option value="IR">Iran</option>
-        <option value="IQ">Iraq</option>
-        <option value="IE">Ireland</option>
-        <option value="IL">Israel</option>
-        <option value="IT">Italy</option>
-        <option value="JM">Jamaica</option>
-        <option value="JP">Japan</option>
-        <option value="JO">Jordan</option>
-        <option value="KZ">Kazakhstan</option>
-        <option value="KE">Kenya</option>
-        <option value="KI">Kiribati</option>
-        <option value="KW">Kuwait</option>
-        <option value="KG">Kyrgyzstan</option>
-        <option value="LA">Laos</option>
-        <option value="LV">Latvia</option>
-        <option value="LB">Lebanon</option>
-        <option value="LS">Lesotho</option>
-        <option value="LR">Liberia</option>
-        <option value="LY">Libya</option>
-        <option value="LI">Liechtenstein</option>
-        <option value="LT">Lithuania</option>
-        <option value="LU">Luxembourg</option>
-        <option value="MG">Madagascar</option>
-        <option value="MW">Malawi</option>
-        <option value="MY">Malaysia</option>
-        <option value="MV">Maldives</option>
-        <option value="ML">Mali</option>
-        <option value="MT">Malta</option>
-        <option value="MH">Marshall Islands</option>
-        <option value="MR">Mauritania</option>
-        <option value="MU">Mauritius</option>
-        <option value="MX">Mexico</option>
-        <option value="FM">Micronesia</option>
-        <option value="MD">Moldova</option>
-        <option value="MC">Monaco</option>
-        <option value="MN">Mongolia</option>
-        <option value="ME">Montenegro</option>
-        <option value="MA">Morocco</option>
-        <option value="MZ">Mozambique</option>
-        <option value="MM">Myanmar</option>
-        <option value="NA">Namibia</option>
-        <option value="NR">Nauru</option>
-        <option value="NP">Nepal</option>
-        <option value="NL">Netherlands</option>
-        <option value="NZ">New Zealand</option>
-        <option value="NI">Nicaragua</option>
-        <option value="NE">Niger</option>
-        <option value="NG">Nigeria</option>
-        <option value="MK">North Macedonia</option>
-        <option value="NO">Norway</option>
-        <option value="OM">Oman</option>
-        <option value="PK">Pakistan</option>
-        <option value="PW">Palau</option>
-        <option value="PA">Panama</option>
-        <option value="PG">Papua New Guinea</option>
-        <option value="PY">Paraguay</option>
-        <option value="PE">Peru</option>
-        <option value="PH">Philippines</option>
-        <option value="PL">Poland</option>
-        <option value="PT">Portugal</option>
-        <option value="QA">Qatar</option>
-        <option value="RO">Romania</option>
-        <option value="RU">Russia</option>
-        <option value="RW">Rwanda</option>
-        <option value="KN">Saint Kitts and Nevis</option>
-        <option value="LC">Saint Lucia</option>
-        <option value="VC">Saint Vincent and the Grenadines</option>
-        <option value="WS">Samoa</option>
-        <option value="SM">San Marino</option>
-        <option value="ST">São Tomé and Príncipe</option>
-        <option value="SA">Saudi Arabia</option>
-        <option value="SN">Senegal</option>
-        <option value="RS">Serbia</option>
-        <option value="SC">Seychelles</option>
-        <option value="SL">Sierra Leone</option>
-        <option value="SG">Singapore</option>
-        <option value="SK">Slovakia</option>
-        <option value="SI">Slovenia</option>
-        <option value="SB">Solomon Islands</option>
-        <option value="SO">Somalia</option>
-        <option value="ZA">South Africa</option>
-        <option value="KR">South Korea</option>
-        <option value="SS">South Sudan</option>
-        <option value="ES">Spain</option>
-        <option value="LK">Sri Lanka</option>
-        <option value="SD">Sudan</option>
-        <option value="SR">Suriname</option>
-        <option value="SE">Sweden</option>
-        <option value="CH">Switzerland</option>
-        <option value="SY">Syria</option>
-        <option value="TW">Taiwan</option>
-        <option value="TJ">Tajikistan</option>
-        <option value="TZ">Tanzania</option>
-        <option value="TH">Thailand</option>
-        <option value="TL">Timor-Leste</option>
-        <option value="TG">Togo</option>
-        <option value="TO">Tonga</option>
-        <option value="TT">Trinidad and Tobago</option>
-        <option value="TN">Tunisia</option>
-        <option value="TR">Turkey</option>
-        <option value="TM">Turkmenistan</option>
-        <option value="TV">Tuvalu</option>
-        <option value="UG">Uganda</option>
-        <option value="UA">Ukraine</option>
-        <option value="AE">United Arab Emirates</option>
-        <option value="GB">United Kingdom</option>
-        <option value="US">United States</option>
-        <option value="UY">Uruguay</option>
-        <option value="UZ">Uzbekistan</option>
-        <option value="VU">Vanuatu</option>
-        <option value="VA">Vatican City</option>
-        <option value="VE">Venezuela</option>
-        <option value="VN">Vietnam</option>
-        <option value="YE">Yemen</option>
-        <option value="ZM">Zambia</option>
-        <option value="ZW">Zimbabwe</option>
-      </select><br>
-      <label for="city">City of Residence:</label>
-      <input type="text" id="city" name="city"><br>
-      <button onclick="showNext('basic-info-investor', 'professional-background')">Next</button>
-    </div>
+  <div id="investor-form" class="form-container">
+    <h2>REGISTER AS AN INVESTOR</h2>
+    <form action="https://formspree.io/f/mvgzraqj" method="POST">
+      <h3>BASIC INFORMATION</h3>
+      <label>
+        Full Name:
+        <input type="text" name="full_name" required>
+      </label>
+      <label>
+        Email Address (for communication and account registration):
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Phone Number (optional but helpful for direct contact):
+        <input type="tel" name="phone_number">
+      </label>
+      <label>
+        Country and City of Residence:
+        <input type="text" name="country_city_residence" required>
+      </label>
 
-    <div id="professional-background" class="form-section" style="display:none;">
-      <h3>Professional Background</h3>
-      <label for="investor-type">Investor Type:</label>
-      <select name="investor-type" id="investorType" required onchange="showOtherInput(this)">
-        <option value="Angel Investor">Angel Investor</option>
-        <option value="Venture capitalist">Venture capitalist</option>
-        <option value="Personal Investor">Personal Investor</option>
-        <option value="Other">Other</option>
-      </select>
-      
-      <div class="otherInput" id="investorTypeOther" style="display: none;">
-        <label for="investorTypeOtherInput">Please specify:</label>
-        <input type="text" id="investorTypeOtherInput" name="investorTypeOther" placeholder="Enter your custom investor type">
-      </div>
-      
-      <script>
-        function showOtherInput(selectElement) {
-          var selectedValue = selectElement.value;
-          var otherDiv = document.getElementById("investorTypeOther");
-      
-          if (selectedValue === "Other") {
-            otherDiv.style.display = "block";
-          } else {
-            otherDiv.style.display = "none";
-          }
-        }
-      </script>
-      
-<br>
-      <label for="industry-interest">Industry Interest:</label>
-      <input type="text" id="industryInterest" name="industry-interest" required><br>
-      <label for="interest-in">Interested In:</label>
-      <select name="interest-in" id="investmentInterest" required onchange="showIndustryInterestInput(this)">
-        <option value="Acquiring a business">Acquiring a business</option>
-        <option value="Investing in a business">Investing in a business</option>
-        <option value="Lending to a business">Lending to a business</option>
-        <option value="Other">Other</option>
-      </select>
-      
-      <div class="otherInput" id="industryInterestOther" style="display: none;">
-        <label for="industryInterestOtherInput">Please specify:</label>
-        <input type="text" id="industryInterestOtherInput" name="industryInterestOther" placeholder="Enter your custom industry">
-      </div>
-      
-      <script>
-        function showIndustryInterestInput(selectElement) {
-          var selectedValue = selectElement.value;
-          var otherDiv = document.getElementById("industryInterestOther");
-      
-          if (selectedValue === "Other") {
-            otherDiv.style.display = "block";
-          } else {
-            otherDiv.style.display = "none";
-          }
-        }
-      </script>
-      <br>
-      <button onclick="showPrevious('professional-background', 'basic-info-investor')">Previous</button>
-      <button onclick="showNext('professional-background', 'investment-preferences')">Next</button>
-    </div>
+      <h3>PROFESSIONAL BACKGROUND</h3>
+      <label>
+        Investor Type (e.g. Angel investor, venture capitalist, personal investor):
+        <input type="text" name="investor_type" required>
+      </label>
+      <label>
+        Industry Interest (Industry interested in investing in):
+        <input type="text" name="industry_interest" required>
+      </label>
+      <label>
+        Interested in (Acquiring a business, investing in a business or lending to a business):
+        <input type="text" name="interested_in" required>
+      </label>
 
-    <div id="investment-preferences" class="form-section" style="display:none;">
-      <h3>Investment Preferences</h3>
-      <label for="investment-budget">Investment Budget / Range:</label>
-      <input type="text" id="investmentBudget" name="investment-budget" required><br>
-      <label for="investment-stages">Preferred Investment Stages:</label>
-      <select name="investment-stages" id="investmentStages" required onchange="showInvestmentStagesInput(this)">
-        <option value="Seed">Seed</option>
-        <option value="Series A">Series A</option>
-        <option value="Series B">Series B</option>
-        <option value="Series C">Series C</option>
-        <option value="Series D">Series D</option>
-        <option value="Other">Other</option>
-      </select>
-      
-      <div class="otherInput" id="investmentStagesOther" style="display: none;">
-        <label for="investmentStagesOtherInput">Please specify:</label>
-        <input type="text" id="investmentStagesOtherInput" name="fundingNeededOther" placeholder="Enter your custom funding stage">
-      </div>
-      
-      <script>
-        function showInvestmentStagesInput(selectElement) {
-          var selectedValue = selectElement.value;
-          var otherDiv = document.getElementById("investmentStagesOther");
-      
-          if (selectedValue === "Other") {
-            otherDiv.style.display = "block";
-          } else {
-            otherDiv.style.display = "none";
-          }
-        }
-      </script>
-<br>      
-      <label for="return-expectation">Return Expectation (Optional):</label>
-      <input type="text" id="returnExpectation" name="return-expectation"><br>
-      <button onclick="showPrevious('investment-preferences', 'professional-background')">Previous</button>
-      <button type="submit" onclick="submitForm()">Submit</button>
-    </div>
-    
-    <button onclick="goBack()">Back to Role Selection</button>
+      <h3>INVESTMENT PREFERENCES</h3>
+      <label>
+        Investment Budget / Range (Minimum and maximum investment they are willing to make):
+        <input type="text" name="investment_budget" required>
+      </label>
+      <label>
+        Preferred Investment Stages (seed, series A, B, C or D):
+        <input type="text" name="investment_stages" required>
+      </label>
+      <label>
+        Return Expectation (Optional):
+        <input type="text" name="return_expectation">
+      </label>
+       <div class="buttons">
+        <button type="button" onclick="goBack()">Previous</button>
+
+      <button type="submit">Submit</button>
+       </div>
+    </form>
   </div>
 
-  <!-- Business Section -->
-  <div id="business-section" class="section">
-    <h2>Business Section</h2>
-    <p>Welcome, Business! Please complete the following forms:</p>
-    
-    <!-- Business Forms -->
-    <div id="basic-info-business" class="form-section">
-      <h3>Basic Information</h3>
-      <label for="businessName">Business Name:</label>
-      <input type="text" id="business-name" name="business-name" required><br>
-      <label for="business-email">Email Address:</label>
-      <input type="email" id="email" name="business-email" readonly><br>
-      <label for="contact-person">Contact Person Name:</label>
-      <input type="text" id="contactPerson" name="contact-person" required><br>
-      <label for="country">Country:</label>
-      <select name="country" id="country" required>
-        <option value="" disabled selected>Select your country</option>
-        <option value="AF">Afghanistan</option>
-        <option value="AL">Albania</option>
-        <option value="DZ">Algeria</option>
-        <option value="AS">American Samoa</option>
-        <option value="AD">Andorra</option>
-        <option value="AO">Angola</option>
-        <option value="AI">Anguilla</option>
-        <option value="AG">Antigua and Barbuda</option>
-        <option value="AR">Argentina</option>
-        <option value="AM">Armenia</option>
-        <option value="AW">Aruba</option>
-        <option value="AU">Australia</option>
-        <option value="AT">Austria</option>
-        <option value="AZ">Azerbaijan</option>
-        <option value="BS">Bahamas</option>
-        <option value="BH">Bahrain</option>
-        <option value="BD">Bangladesh</option>
-        <option value="BB">Barbados</option>
-        <option value="BY">Belarus</option>
-        <option value="BE">Belgium</option>
-        <option value="BZ">Belize</option>
-        <option value="BJ">Benin</option>
-        <option value="BM">Bermuda</option>
-        <option value="BT">Bhutan</option>
-        <option value="BO">Bolivia</option>
-        <option value="BA">Bosnia and Herzegovina</option>
-        <option value="BW">Botswana</option>
-        <option value="BR">Brazil</option>
-        <option value="BN">Brunei</option>
-        <option value="BG">Bulgaria</option>
-        <option value="BF">Burkina Faso</option>
-        <option value="BI">Burundi</option>
-        <option value="CV">Cabo Verde</option>
-        <option value="KH">Cambodia</option>
-        <option value="CM">Cameroon</option>
-        <option value="CA">Canada</option>
-        <option value="KY">Cayman Islands</option>
-        <option value="CF">Central African Republic</option>
-        <option value="TD">Chad</option>
-        <option value="CL">Chile</option>
-        <option value="CN">China</option>
-        <option value="CO">Colombia</option>
-        <option value="KM">Comoros</option>
-        <option value="CG">Congo (Congo-Brazzaville)</option>
-        <option value="CD">Congo (Congo-Kinshasa)</option>
-        <option value="CR">Costa Rica</option>
-        <option value="CI">Côte d’Ivoire</option>
-        <option value="HR">Croatia</option>
-        <option value="CU">Cuba</option>
-        <option value="CY">Cyprus</option>
-        <option value="CZ">Czechia</option>
-        <option value="DK">Denmark</option>
-        <option value="DJ">Djibouti</option>
-        <option value="DM">Dominica</option>
-        <option value="DO">Dominican Republic</option>
-        <option value="EC">Ecuador</option>
-        <option value="EG">Egypt</option>
-        <option value="SV">El Salvador</option>
-        <option value="GQ">Equatorial Guinea</option>
-        <option value="ER">Eritrea</option>
-        <option value="EE">Estonia</option>
-        <option value="SZ">Eswatini</option>
-        <option value="ET">Ethiopia</option>
-        <option value="FJ">Fiji</option>
-        <option value="FI">Finland</option>
-        <option value="FR">France</option>
-        <option value="GA">Gabon</option>
-        <option value="GM">Gambia</option>
-        <option value="GE">Georgia</option>
-        <option value="DE">Germany</option>
-        <option value="GH">Ghana</option>
-        <option value="GR">Greece</option>
-        <option value="GD">Grenada</option>
-        <option value="GU">Guam</option>
-        <option value="GT">Guatemala</option>
-        <option value="GN">Guinea</option>
-        <option value="GW">Guinea-Bissau</option>
-        <option value="GY">Guyana</option>
-        <option value="HT">Haiti</option>
-        <option value="HN">Honduras</option>
-        <option value="HU">Hungary</option>
-        <option value="IS">Iceland</option>
-        <option value="IN">India</option>
-        <option value="ID">Indonesia</option>
-        <option value="IR">Iran</option>
-        <option value="IQ">Iraq</option>
-        <option value="IE">Ireland</option>
-        <option value="IL">Israel</option>
-        <option value="IT">Italy</option>
-        <option value="JM">Jamaica</option>
-        <option value="JP">Japan</option>
-        <option value="JO">Jordan</option>
-        <option value="KZ">Kazakhstan</option>
-        <option value="KE">Kenya</option>
-        <option value="KI">Kiribati</option>
-        <option value="KW">Kuwait</option>
-        <option value="KG">Kyrgyzstan</option>
-        <option value="LA">Laos</option>
-        <option value="LV">Latvia</option>
-        <option value="LB">Lebanon</option>
-        <option value="LS">Lesotho</option>
-        <option value="LR">Liberia</option>
-        <option value="LY">Libya</option>
-        <option value="LI">Liechtenstein</option>
-        <option value="LT">Lithuania</option>
-        <option value="LU">Luxembourg</option>
-        <option value="MG">Madagascar</option>
-        <option value="MW">Malawi</option>
-        <option value="MY">Malaysia</option>
-        <option value="MV">Maldives</option>
-        <option value="ML">Mali</option>
-        <option value="MT">Malta</option>
-        <option value="MH">Marshall Islands</option>
-        <option value="MR">Mauritania</option>
-        <option value="MU">Mauritius</option>
-        <option value="MX">Mexico</option>
-        <option value="FM">Micronesia</option>
-        <option value="MD">Moldova</option>
-        <option value="MC">Monaco</option>
-        <option value="MN">Mongolia</option>
-        <option value="ME">Montenegro</option>
-        <option value="MA">Morocco</option>
-        <option value="MZ">Mozambique</option>
-        <option value="MM">Myanmar</option>
-        <option value="NA">Namibia</option>
-        <option value="NR">Nauru</option>
-        <option value="NP">Nepal</option>
-        <option value="NL">Netherlands</option>
-        <option value="NZ">New Zealand</option>
-        <option value="NI">Nicaragua</option>
-        <option value="NE">Niger</option>
-        <option value="NG">Nigeria</option>
-        <option value="MK">North Macedonia</option>
-        <option value="NO">Norway</option>
-        <option value="OM">Oman</option>
-        <option value="PK">Pakistan</option>
-        <option value="PW">Palau</option>
-        <option value="PA">Panama</option>
-        <option value="PG">Papua New Guinea</option>
-        <option value="PY">Paraguay</option>
-        <option value="PE">Peru</option>
-        <option value="PH">Philippines</option>
-        <option value="PL">Poland</option>
-        <option value="PT">Portugal</option>
-        <option value="QA">Qatar</option>
-        <option value="RO">Romania</option>
-        <option value="RU">Russia</option>
-        <option value="RW">Rwanda</option>
-        <option value="KN">Saint Kitts and Nevis</option>
-        <option value="LC">Saint Lucia</option>
-        <option value="VC">Saint Vincent and the Grenadines</option>
-        <option value="WS">Samoa</option>
-        <option value="SM">San Marino</option>
-        <option value="ST">São Tomé and Príncipe</option>
-        <option value="SA">Saudi Arabia</option>
-        <option value="SN">Senegal</option>
-        <option value="RS">Serbia</option>
-        <option value="SC">Seychelles</option>
-        <option value="SL">Sierra Leone</option>
-        <option value="SG">Singapore</option>
-        <option value="SK">Slovakia</option>
-        <option value="SI">Slovenia</option>
-        <option value="SB">Solomon Islands</option>
-        <option value="SO">Somalia</option>
-        <option value="ZA">South Africa</option>
-        <option value="KR">South Korea</option>
-        <option value="SS">South Sudan</option>
-        <option value="ES">Spain</option>
-        <option value="LK">Sri Lanka</option>
-        <option value="SD">Sudan</option>
-        <option value="SR">Suriname</option>
-        <option value="SE">Sweden</option>
-        <option value="CH">Switzerland</option>
-        <option value="SY">Syria</option>
-        <option value="TW">Taiwan</option>
-        <option value="TJ">Tajikistan</option>
-        <option value="TZ">Tanzania</option>
-        <option value="TH">Thailand</option>
-        <option value="TL">Timor-Leste</option>
-        <option value="TG">Togo</option>
-        <option value="TO">Tonga</option>
-        <option value="TT">Trinidad and Tobago</option>
-        <option value="TN">Tunisia</option>
-        <option value="TR">Turkey</option>
-        <option value="TM">Turkmenistan</option>
-        <option value="TV">Tuvalu</option>
-        <option value="UG">Uganda</option>
-        <option value="UA">Ukraine</option>
-        <option value="AE">United Arab Emirates</option>
-        <option value="GB">United Kingdom</option>
-        <option value="US">United States</option>
-        <option value="UY">Uruguay</option>
-        <option value="UZ">Uzbekistan</option>
-        <option value="VU">Vanuatu</option>
-        <option value="VA">Vatican City</option>
-        <option value="VE">Venezuela</option>
-        <option value="VN">Vietnam</option>
-        <option value="YE">Yemen</option>
-        <option value="ZM">Zambia</option>
-        <option value="ZW">Zimbabwe</option>
-      </select> <br>
-      <label for="city">City of Residence:</label>
-      <input type="text" id="city" name="city"><br>    
-        <button onclick="showNext('basic-info-business', 'business-details')">Next</button>
-    </div>
+  <div id="business-form" class="form-container">
+    <h2>REGISTER AS A BUSINESS</h2>
+    <form action="https://formspree.io/f/mvgzraqj" method="POST">
+      <h3>BASIC INFORMATION</h3>
+      <label>
+        Business Name:
+        <input type="text" name="business_name" required>
+      </label>
+      <label>
+        Email Address (for communication and account registration):
+        <input type="email" name="business_email" required>
+      </label>
+      <label>
+        Contact Person Name (Representative of the business):
+        <input type="text" name="contact_person_name" required>
+      </label>
+      <label>
+        Country and City of Operation:
+        <input type="text" name="country_city_operation" required>
+      </label>
 
-    <div id="business-details" class="form-section" style="display:none;">
-      <h3>Business Details</h3>
-      <label for="industry">Industry:</label>
-      <select name="industry" id="industry" required onchange="showIndustryInput(this)">
-        <option value="Agriculture">Agriculture</option>
-        <option value="Technology">Technology</option>
-        <option value="Fashion">Fashion</option>
-        <option value="Music">Music</option>
-        <option value="Health">Health</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Trader">Trader</option>
-        <option value="Other">Other</option>
-      </select>
-      
-      <div class="otherInput" id="industryOther" style="display: none;">
-        <label for="industryInput">Please specify:</label>
-        <input type="text" id="industryInput" name="industryInput" placeholder="Enter custom option">
-      </div>
-      
-      <script>
-        function showIndustryInput(selectElement) {
-          var selectedValue = selectElement.value;
-          var otherDiv = document.getElementById("industryOther");
-      
-          if (selectedValue === "Other") {
-            otherDiv.style.display = "block";
-          } else {
-            otherDiv.style.display = "none";
-          }
-        }
-      </script>
-      
-      <br>
-      <label for="business-type">Business Type:</label>
-      <select name="business-type" id="businessType" required onchange="showBusinessTypeInput(this)">
-        <option value="Sole proprietorship">Sole proprietorship</option>
-        <option value="Partnership">Partnership</option>
-        <option value="Limited company">Limited company</option>
-        <option value="Other">Other</option>
-      </select>
-      
-      <div class="otherInput" id="businessTypeOther" style="display: none;">
-        <label for="businessTypeOtherInput">Please specify:</label>
-        <input type="text" id="businessTypeOtherInput" name="businessTypeOther" placeholder="Enter custom option">
-      </div>
-      
-      <script>
-        function showBusinessTypeInput(selectElement) {
-          var selectedValue = selectElement.value;
-          var otherDiv = document.getElementById("businessTypeOther");
-      
-          if (selectedValue === "Other") {
-            otherDiv.style.display = "block";
-          } else {
-            otherDiv.style.display = "none";
-          }
-        }
-      </script>
-      
-      <br>
-      <label for="registration-number">Company Registration Number:</label>
-      <input type="text" id="registrationNumber" name="registration-number" required><br>
-      <label for="business-description">Business Description:</label>
-      <input type="text" id="businessDescription" name="business-description" required><br>
-      <label for="annual-sales">Annual Sales and Margin on Sales:</label>
-      <input type="text" id="annualSales" name="annual-sales" required><br>
-      <button onclick="showPrevious('business-details', 'basic-info-business')">Previous</button>
-      <button onclick="showNext('business-details', 'funding-information')">Next</button>
-    </div>
+      <h3>BUSINESS DETAILS</h3>
+      <label>
+        Industry (e.g. technology, agriculture, health, etc.):
+        <input type="text" name="business_industry" required>
+      </label>
+      <label>
+        Business Type (e.g. sole proprietorship, partnership, limited company):
+        <input type="text" name="business_type" required>
+      </label>
+      <label>
+        Company Registration Number (for verification):
+        <input type="text" name="company_registration_number" required>
+      </label>
+      <label>
+        Business Description (Describe the business in a single line or business model):
+        <input type="text" name="business_description" required>
+      </label>
+      <label>
+        Annual Sales and Margin on Sales (How much sales do you make in a year and the profit on the sales):
+        <input type="text" name="annual_sales_margin" required>
+      </label>
 
-    <div id="funding-information" class="form-section" style="display:none;">
-      <h3>Funding Information</h3>
-      <label for="investment-amount">Amount of Investment Needed:</label>
-      <input type="text" id="investmentAmount" name="investment-amount" required><br>
-      <label for="investment-purpose">Purpose of Investment:</label>
-      <input type="text" id="investmentPurpose" name="investment-purpose" required><br>
-      <label for="preferred-investor">Preferred Investor Type:</label>
-<select name="preferred-investor" id="preferredInvestorType" required onchange="showPreferredInvestorInput(this)">
-  <option value="Angel Investor">Angel Investor</option>
-  <option value="Venture capitalist">Venture capitalist</option>
-  <option value="Other">Other</option>
-</select>
+      <h3>FUNDING INFORMATION</h3>
+      <label>
+        Amount of Investment Needed (specific amount or range):
+        <input type="text" name="investment_needed" required>
+      </label>
+      <label>
+        Purpose of Investment (brief description of how funds will be used):
+        <input type="text" name="investment_purpose" required>
+      </label>
+      <label>
+        Preferred Investor Type (e.g. angel investor, venture capitalist, etc.):
+        <input type="text" name="preferred_investor_type" required>
+      </label>
+      <label>
+        Equity Offered (if applicable, percentage or other terms of investment):
+        <input type="text" name="equity_offered" required>
+      </label>
+     <div class="buttons"> <button type="button" onclick="goBack()">Previous</button>
 
-<div class="otherInput" id="preferredInvestorTypeOther" style="display: none;">
-  <label for="preferredInvestorTypeOtherInput">Please specify:</label>
-  <input type="text" id="preferredInvestorTypeOtherInput" name="preferredInvestorTypeOther" placeholder="Enter custom option">
-</div>
+      <button type="submit">Submit</button></div>
+      </form>
+  </div>
 
-<script>
-  function showPreferredInvestorInput(selectElement) {
-    var selectedValue = selectElement.value;
-    var otherDiv = document.getElementById("preferredInvestorTypeOther");
+  <script>
+// Function to show the selected form based on user choice
+function showForm(role) {
+  document.querySelector('.intro-container').style.display = 'none';
+  if (role === 'investor') {
+    document.getElementById('investor-form').style.display = 'block';
+  } else if (role === 'business') {
+    document.getElementById('business-form').style.display = 'block';
+  }
+}
 
-    if (selectedValue === "Other") {
-      otherDiv.style.display = "block";
+// Function to go back to the role selection screen
+function goBack() {
+  document.querySelector('.intro-container').style.display = 'block';
+  document.getElementById('investor-form').style.display = 'none';
+  document.getElementById('business-form').style.display = 'none';
+}
+
+// Function to validate the form and check for unfilled required fields
+function validateForm(role) {
+  let isValid = true;
+  let fields = [];
+  
+  // Get the form elements based on the role
+  if (role === 'investor') {
+    fields = document.querySelectorAll('#investor-form input[required]');
+  } else if (role === 'business') {
+    fields = document.querySelectorAll('#business-form input[required]');
+  }
+
+  // Loop through each field and check if it's filled
+  fields.forEach(field => {
+    if (!field.value.trim()) {
+      isValid = false;
+      field.style.borderColor = 'red'; // Highlight unfilled field with red border
     } else {
-      otherDiv.style.display = "none";
+      field.style.borderColor = ''; // Remove red border if field is filled
     }
+  });
+
+  // If the form is valid, show an alert; otherwise, prevent submission
+  if (isValid) {
+    alert('Form submitted successfully!');
+    return true;
+  } else {
+    alert('Please fill in all required fields.');
+    return false;
   }
-</script>
+}
 
-      <br>
-      <label for="equity-offered">Equity Offered:</label>
-      <input type="text" id="equityOffered" name="equity-offered"><br>
-      <button onclick="showPrevious('funding-information', 'business-details')">Previous</button>
-      <button type="submit" onclick="submitForm()">Submit</button>
-    </div>
+  </script>
 
-    <button onclick="goBack()">Back to Role Selection</button>
-  </div>
-
-
-</form>
-
-<script>
-  function showSection() {
-    const userType = document.querySelector('input[name="user-type"]:checked');
-    if (!userType) {
-      alert("Please select a role (Investor or Business) before proceeding.");
-      return;
-    }
-    const selectedValue = userType.value;
-    document.getElementById("get-started").style.display = "none";
-
-    if (selectedValue === "investor") {
-      document.getElementById("investor-section").style.display = "block";
-    } else if (selectedValue === "business") {
-      document.getElementById("business-section").style.display = "block";
-    }
-  }
-
-  function goBack() {
-    document.getElementById("investor-section").style.display = "none";
-    document.getElementById("business-section").style.display = "none";
-    document.getElementById("get-started").style.display = "block";
-  }
-
-  function showNext(current, next) {
-    document.getElementById(current).style.display = "none";
-    document.getElementById(next).style.display = "block";
-  }
-
-  function showPrevious(current, previous) {
-    document.getElementById(current).style.display = "none";
-    document.getElementById(previous).style.display = "block";
-  }
-
-  function submitForm(event) {
-    event.preventDefault();  // Prevents the default form submission
-
-    const form = document.querySelector('form');  // Get the form
-    const formData = new FormData(form);
-
-    // Check if all required fields are filled
-    let allFieldsFilled = true;
-    form.querySelectorAll('input[required], textarea[required]').forEach(field => {
-      if (!field.value.trim()) {
-        allFieldsFilled = false;
-        alert("Please fill all required fields before submitting.");
-        field.focus();
-        return;
-      }
-    });
-
-    // Only submit the form if all fields are filled
-    if (allFieldsFilled) {
-      // Show a loading alert to notify user
-      alert("Submitting your form, please wait...");
-
-      fetch(form.action, {  // Using the action URL from your form
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          alert("Form submitted successfully!");
-          goBack();
-        } else {
-          alert("There was an error submitting the form. Please try again.");
-        }
-      })
-      .catch(error => {
-        alert("Error submitting form. Please try again.");
-      });
-    }
-  }
-</script>
-
-
-  <!-- CSS -->
-  <style>
-    section {
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto; /* Center the section horizontally */
-      padding: 20px;
-      background-color: #f4f4f4;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center content inside the section */
-      justify-content: center; /* Center vertically */
-    }
   
-    .section {
-      display: none;
-    }
-  
-    .visible {
-      display: block;
-    }
 
-  .radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Adds space between radio options */
-  }
 
-  .radio-wrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-
-  .radio-input {
-    display: none; /* Hide default radio button */
-  }
-
-  .radio-custom {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #1DA1F3;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .radio-input:checked + .radio-custom {
-    background-color: #1DA1F3;
-    border-color: #1DA1F3;
-  }
-
-  .radio-label {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-  }
-
-  /* Hover effect for custom radio buttons */
-  .radio-wrapper:hover .radio-custom {
-    border-color: #00C6FF;
-  }
-
-    h1,
-    h2 {
-      text-align: center;
-      background: linear-gradient(90deg, #1DA1F3, #00C6FF);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-      margin-top: 10px;
-    }
-  
-    button {
-      background-color: #1DA1F3;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 10px 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-  
-    button:hover {
-      background-color: #ffffff;
-      color: #1DA1F3;
-      border: 2px solid #1DA1F3;
-    }
-  
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-  
-    input,
-    select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 2px solid #ddd;
-      font-size: 16px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-  
-    input:focus-within,
-    select:focus-within {
-      transform: scale(1.05); /* Increase size slightly when focused */
-      border-color: #1DA1F3; /* Keep border color blue */
-    }
-  
-    .form-section {
-      margin-top: 20px;
-      width: 100%; /* Ensures form stretches to full section width */
-    }
-  
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      section {
-        width: 90%;
-      }
-  
-      button {
-        width: 100%;
-      }
-    }
-  
-    @media (max-width: 480px) {
-      button {
-        padding: 12px;
-        font-size: 16px;
-      }
-  
-      h1,
-      h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+ 
   
   
   
