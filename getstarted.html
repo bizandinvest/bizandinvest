@@ -792,25 +792,40 @@
     document.getElementById(previous).style.display = "block";
   }
 
-  function submitForm() {
-    const form = document.getElementById('registrationForm');
+  function submitForm(event) {
+    event.preventDefault();  // Prevents the default form submission
+
+    const form = document.querySelector('form');  // Get the form
     const formData = new FormData(form);
 
-    fetch('https://script.google.com/macros/s/XYZ123/exec', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert("Form submitted successfully!");
-      goBack();
-    })
-    .catch(error => {
-      alert("Error submitting form. Please try again.");
+    // Check if all required fields are filled
+    let allFieldsFilled = true;
+    form.querySelectorAll('input[required], textarea[required]').forEach(field => {
+      if (!field.value.trim()) {
+        allFieldsFilled = false;
+        alert("Please fill all required fields before submitting.");
+        field.focus();
+        return;
+      }
     });
+
+    // Only submit the form if all fields are filled
+    if (allFieldsFilled) {
+      fetch(form.action, {  // Using the action URL from your form
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("Form submitted successfully!");
+        goBack();
+      })
+      .catch(error => {
+        alert("Error submitting form. Please try again.");
+      });
+    }
   }
 </script>
-
 
   <!-- CSS -->
   <style>
